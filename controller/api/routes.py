@@ -6,7 +6,8 @@ from core.helpers.helper_zulu import get_the_east, get_tonight_show
 api_bp = Blueprint("api", __name__)
 
 
-@api_bp.route('<program>', defaults={'page': 1})
+
+@api_bp.route('<program>/', defaults={'page': 1})
 @api_bp.route("<program>/<int:page>", methods=['GET'])
 def the_east(program, page):
     result = []
