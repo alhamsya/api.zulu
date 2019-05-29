@@ -29,5 +29,5 @@ def make_session_permanent():
         minutes=core.config['SESSIONS_TIMEOUT'])
 
 
-if __name__ == "__main__":
-    core.run(host="0.0.0.0", threaded=True)
+# if __name__ == "__main__":
+#     core.run(host="0.0.0.0", threaded=True)
