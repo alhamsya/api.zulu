@@ -1,5 +1,5 @@
-from app.main.routes import main_bp
-from app.api.routes import api_bp
+from controller.main.routes import main_bp
+from controller.api.routes import api_bp
 
 
 def register_bp(app):
