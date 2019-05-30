@@ -10,7 +10,6 @@ db = SQLAlchemy()
 
 def create_app(config_name):
     app = Flask(__name__)
-    app.config['JSON_SORT_KEYS'] = False
 
     app.config.from_object(setup[config_name])
     setup[config_name].init_app(app)

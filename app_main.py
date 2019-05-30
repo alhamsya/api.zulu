@@ -10,7 +10,7 @@ from core.adapter import create_app
 from config.models import *
 
 core = create_app(os.environ.get('FLASK_CONFIG') or 'development')
-
+core.config['JSON_SORT_KEYS'] = False
 if core.config['DEBUG'] is True:
     CORS(core, supports_credentials=True)
 

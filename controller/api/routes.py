@@ -21,6 +21,14 @@ def the_east(program, page):
     if program not in list_program:
         return resp_err("Request wrong", 1, 406)
 
+    if program == "the-east":
+        test = get_the_east()
+    elif program == "tonight-show":
+        tets = get_tonight_show()
+
+    if not test:
+        return resp_err("Request not valid", 2)
+
     for i in range(1, page + 1):
         if program == "the-east":
             temp = get_the_east(i)
