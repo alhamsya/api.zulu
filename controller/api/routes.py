@@ -1,7 +1,6 @@
 from flask import Blueprint
 
-from core.hooks import resp_err, resp_success
-from core.utils import internet_on
+from core.hooks import resp_err, resp_success, internet_on
 from core.helpers.helper_zulu import get_the_east, get_tonight_show
 
 api_bp = Blueprint("api", __name__)
@@ -34,8 +33,8 @@ def the_east(program, page):
             zulu.append(j)
 
     for data in zulu:
-        url_video = "https://www.youtube.com/watch/%s" % data.get('youtube')
-        url_mobile = "https://www.m.youtube.com/watch?v=%s" % data.get('youtube')
+        url_video = "youtube.com/watch/%s" % data.get('youtube')
+        url_mobile = "youtube.com/watch?v=%s" % data.get('youtube')
         thumb_url = "https://thumb.zulu.id/?url={}&w=950&h=530".format(data.get('image_cover'))
         content = {
             "episode": data.get('episode_no'),

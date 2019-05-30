@@ -1,4 +1,5 @@
 from flask import jsonify
+import urllib3
 
 
 def resp_err(message, error_num=None, err_code=400):
@@ -20,3 +21,12 @@ def resp_success(data, message=None, code=200):
         "data": data
     }
     return jsonify(content), code
+
+
+def internet_on():
+    try:
+        http = urllib3.PoolManager()
+        http.request('GET', 'http://216.58.192.142', timeout=5.5)
+        return True
+    except (urllib3.exceptions.NewConnectionError, urllib3.exceptions.MaxRetryError):
+        return False
