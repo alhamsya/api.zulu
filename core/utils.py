@@ -21,7 +21,7 @@ def validate_int_between(param, smallest, biggest) -> bool:
         return False
 
 
-def get_now(region='ID'):
+def get_now(region='ID', date_only=False):
     region.upper()
     tz = {
         'ID': 'Asia/Jakarta',
@@ -36,7 +36,8 @@ def get_now(region='ID'):
         'SAC': 'America/Sao_Paulo',
         'IND': 'Asia/Kolkata',
     }
-
+    if date_only:
+        return dt_to_str(datetime.now(pytz.timezone(tz[region])).date(), True)
     return dt_to_str(datetime.now(pytz.timezone(tz[region])))
 
 
@@ -44,3 +45,9 @@ def dt_to_str(dt: datetime, date_only=False):
     if date_only:
         return dt.strftime("%Y-%m-%d")
     return dt.strftime("%Y-%m-%d %H:%M:%S")
+
+
+def str_to_dt(dt: str, with_seconds=True):
+    if with_seconds:
+        return datetime.strptime(dt, '%Y-%m-%dT%H:%M:%S')
+    return datetime.strptime(dt, '%Y-%m-%d').date()
