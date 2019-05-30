@@ -8,9 +8,11 @@ from core.error import error_handler
 
 db = SQLAlchemy()
 
-def create_app(config_name):
-    app = Flask(__name__)
 
+def create_app(config_name):
+    '''The application factory function'''
+
+    app = Flask(__name__)
     app.config.from_object(setup[config_name])
     setup[config_name].init_app(app)
 

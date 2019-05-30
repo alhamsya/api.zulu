@@ -1,17 +1,14 @@
-from datetime import datetime
-
 from flask import Blueprint
 
 from core.hooks import resp_err, resp_success
+from core.utils import get_now
 
 main_bp = Blueprint("main", __name__)
 
 @main_bp.route("/", methods=['GET'])
 def app_info():
-
-    local_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     result = {
-        "local_time": local_time
+        "local_time": get_now('ID')
     }
 
     return resp_success(result)
