@@ -33,7 +33,7 @@ def the_east(program, page):
             zulu.append(j)
 
     for data in zulu:
-        url_video = "youtube.com/watch/%s" % data.get('youtube')
+        url_video = "https://youtube.com/watch/%s" % data.get('youtube')
         url_mobile = "youtube.com/watch?v=%s" % data.get('youtube')
         thumb_url = "https://thumb.zulu.id/?url={}&w=950&h=530".format(data.get('image_cover'))
         content = {
