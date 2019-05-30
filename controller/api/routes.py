@@ -1,6 +1,7 @@
 from flask import Blueprint
 
-from core.hooks import resp_err, resp_success, internet_on
+from core.hooks import resp_err, resp_success
+from core.decorators import is_connection
 from core.helpers.helper_zulu import get_the_east, get_tonight_show
 
 api_bp = Blueprint("api", __name__)
@@ -8,6 +9,7 @@ api_bp = Blueprint("api", __name__)
 
 @api_bp.route('<program>/', defaults={'page': 1})
 @api_bp.route("<program>/<int:page>", methods=['GET'])
+@is_connection
 def the_east(program, page):
     result = []
     zulu = []
@@ -19,9 +21,6 @@ def the_east(program, page):
 
     if program not in list_program:
         return resp_err("Request wrong", 1, 406)
-
-    if not internet_on():
-        return resp_err("Not internet connection", 2)
 
     for i in range(1, page + 1):
         if program == "the-east":

@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import jsonify, request
 import urllib3
 
 
@@ -23,7 +23,7 @@ def resp_success(data, message=None, code=200):
     return jsonify(content), code
 
 
-def internet_on():
+def check_connection():
     try:
         http = urllib3.PoolManager()
         http.request('GET', 'http://216.58.192.142', timeout=5.5)
