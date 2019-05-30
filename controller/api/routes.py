@@ -24,7 +24,7 @@ def the_east(program, page):
     if program == "the-east":
         test = get_the_east()
     elif program == "tonight-show":
-        tets = get_tonight_show()
+        test = get_tonight_show()
 
     if not test:
         return resp_err("Request not valid", 2)
