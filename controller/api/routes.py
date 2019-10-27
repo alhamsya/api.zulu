@@ -2,7 +2,7 @@ from flask import Blueprint
 
 from core.hooks import resp_err, resp_success
 from core.decorators import is_connection
-from core.helpers.helper_zulu import get_the_east, get_tonight_show
+from core.helpers.helper_zulu import get_the_east, get_tonight_show, get_malam
 
 api_bp = Blueprint("api", __name__)
 
@@ -16,7 +16,8 @@ def the_east(program, page):
 
     list_program = [
         "the-east",
-        "tonight-show"
+        "tonight-show",
+        "malam"
     ]
 
     if program not in list_program:
@@ -27,6 +28,8 @@ def the_east(program, page):
             temp = get_the_east(i)
         elif program == "tonight-show":
             temp = get_tonight_show(i)
+        elif program == "malam":
+            temp = get_malam(i)
 
         for j in temp:
             zulu.append(j)
